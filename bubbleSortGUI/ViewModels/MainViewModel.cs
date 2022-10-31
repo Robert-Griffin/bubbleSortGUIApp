@@ -1,4 +1,6 @@
-﻿using System;
+﻿using bubbleSortGUI.Commands;
+using bubbleSortGUI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +11,16 @@ namespace bubbleSortGUI.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private string _leftString;
+        private List<List<string>> csv;
+        public MainViewModel()
+        {
+            _openFileCommand = new OpenFileCommand
+            {
+                MainViewModel = this
+            };
+        }
+
+        private string _leftString = "test";
         public string LeftString
         {
             get
@@ -23,7 +34,7 @@ namespace bubbleSortGUI.ViewModels
             }
         }
 
-        private string _rightString;
+        private string _rightString = "test2";
 
         public string RightString
         {
@@ -38,7 +49,43 @@ namespace bubbleSortGUI.ViewModels
             }
         }
 
-        public ICommand LeftSelectCommand { get; }
-        public ICommand RightSelectCommand { get; }
+
+        private ICommand _leftSelectCommand = new LeftSelectCommand();
+
+        public ICommand LeftSelectCommand
+        {
+            get 
+            { return _leftSelectCommand; }
+            set { _leftSelectCommand = value; }
+        }
+       
+        private ICommand _rightSelectCommand = new RightSelectCommand();
+
+        public ICommand RightSelectCommand
+        {
+            get
+            { return _rightSelectCommand; }
+            set { _rightSelectCommand = value; }
+        }
+
+        private ICommand _openFileCommand;
+
+
+        public ICommand OpenFileCommand
+        {
+            get
+            { return _openFileCommand; }
+            set { _openFileCommand = value; }
+        }
+
+        public void ReadCSV(string path)
+        {
+            CSVReaderModel csvReaderModel = new CSVReaderModel();
+
+            csv = csvReaderModel.ReadCSV(path);
+
+        }
+
+
     }
 }

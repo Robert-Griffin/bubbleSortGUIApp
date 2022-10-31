@@ -29,7 +29,8 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Margin="40 15"
-                Content="Open File"/>
+                Content="Open File"
+                Command="{Binding OpenFileCommand}"/>
         <Button x:Name="leftSortButton" 
                 Grid.Row="2"
                 Content="{Binding LeftString}" 
