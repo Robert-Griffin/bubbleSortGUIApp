@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bubbleSortGUI.ViewModels;
+using System;
 using System.Windows.Input;
 
 namespace bubbleSortGUI.Commands
@@ -6,6 +7,11 @@ namespace bubbleSortGUI.Commands
     public class LeftSelectCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
+
+        public LeftSelectCommand(MainViewModel mainViewModel)
+        {
+
+        }
 
         public bool CanExecute(object parameter)
         {

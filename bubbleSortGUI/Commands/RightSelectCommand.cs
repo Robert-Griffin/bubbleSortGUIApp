@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bubbleSortGUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,11 @@ namespace bubbleSortGUI.Commands
     public class RightSelectCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
+
+        public RightSelectCommand(MainViewModel mainViewModel)
+        {
+
+        }
 
         public bool CanExecute(object parameter)
         {

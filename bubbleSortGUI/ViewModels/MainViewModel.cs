@@ -14,6 +14,8 @@ namespace bubbleSortGUI.ViewModels
         private List<List<string>> csv;
         public MainViewModel()
         {
+            _leftSelectCommand = new LeftSelectCommand(this);
+            _rightSelectCommand = new RightSelectCommand(this);
             _openFileCommand = new OpenFileCommand
             {
                 MainViewModel = this
@@ -50,27 +52,23 @@ namespace bubbleSortGUI.ViewModels
         }
 
 
-        private ICommand _leftSelectCommand = new LeftSelectCommand();
-
+        private ICommand _leftSelectCommand;
         public ICommand LeftSelectCommand
         {
             get 
             { return _leftSelectCommand; }
-            set { _leftSelectCommand = value; }
         }
        
-        private ICommand _rightSelectCommand = new RightSelectCommand();
 
+        private ICommand _rightSelectCommand;
         public ICommand RightSelectCommand
         {
             get
             { return _rightSelectCommand; }
-            set { _rightSelectCommand = value; }
         }
 
+
         private ICommand _openFileCommand;
-
-
         public ICommand OpenFileCommand
         {
             get
