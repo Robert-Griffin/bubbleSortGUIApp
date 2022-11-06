@@ -6,31 +6,67 @@
              xmlns:local="clr-namespace:bubbleSortGUI.Views"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="750">
+
+    <Border>
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="55"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Text="Bubble Sort App" 
-                   VerticalAlignment="Center" 
-                   Margin="5 0 0 0"/>
-        <Button x:Name="openFileButton"
-                Grid.Row="1"
-                Grid.Column="0"
-                Width="130"
-                Height="38"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                Margin="40 15"
-                Content="Open File"
-                Command="{Binding OpenFileCommand}"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Manual Insertion Sort"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="White"
+                       FontSize="22" 
+                       FontFamily="Microsoft YaHei UI"
+                       Grid.Row="0"
+                       Grid.ColumnSpan="2"/>
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Height="40"
+                        VerticalAlignment="Top"
+                        Margin="0 10 0 0">
+                
+                <Button x:Name="openFileButton"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Width="130"
+                    Height="38"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="40 0 0 0"
+                    Content="Open File"
+                    Command="{Binding OpenFileCommand}"
+                    BorderBrush="Black"
+                    BorderThickness="3" 
+                    FontFamily="Microsoft YaHei UI" 
+                    FontSize="14" 
+                    Background="#FFC2C9D6"/>
+
+                <TextBlock Text="Current File: "
+                           VerticalAlignment="Center"
+                           Margin="10 0 0 0"
+                           FontFamily="Microsoft YaHei UI"
+                           Foreground="#FFAEBFC9"/>
+                
+                <TextBlock Text="{Binding CurrentFile}"
+                           VerticalAlignment="Center"
+                           Margin="10 0 0 0"
+                           FontFamily="Microsoft YaHei UI"
+                           Foreground="#FFAEBFC9"/>
+            </StackPanel>
+        
+            
         <Button x:Name="leftSortButton" 
                 Grid.Row="2"
                 Content="{Binding LeftString}" 
@@ -40,6 +76,11 @@
                 Width="300" 
                 Height="200"
                 Command="{Binding LeftSelectCommand}"
+                BorderBrush="Black"
+                BorderThickness="3" 
+                FontFamily="Microsoft YaHei UI" 
+                FontSize="14" 
+                Background="#FFC2C9D6"
                 />
         <Button x:Name="rightSortButton" 
                 Grid.Row="2"
@@ -51,6 +92,11 @@
                 Width="300" 
                 Height="200"
                 Command="{Binding RightSelectCommand}"
-                />
+                BorderBrush="Black"
+                BorderThickness="3" 
+                FontFamily="Microsoft YaHei UI" 
+                FontSize="14" 
+                Background="#FFC2C9D6"/>
     </Grid>
+    </Border>
 </UserControl>
