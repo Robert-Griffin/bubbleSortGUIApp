@@ -8,9 +8,11 @@ namespace bubbleSortGUI.Commands
     {
         public event EventHandler CanExecuteChanged;
 
+        private MainViewModel _mainViewModel;
+
         public LeftSelectCommand(MainViewModel mainViewModel)
         {
-
+            _mainViewModel = mainViewModel;
         }
 
         public bool CanExecute(object parameter)
@@ -20,7 +22,7 @@ namespace bubbleSortGUI.Commands
 
         public void Execute(object parameter)
         {
-            Console.WriteLine("bing bong");
+            _mainViewModel.ChooseLeft();
         }
     }
 }

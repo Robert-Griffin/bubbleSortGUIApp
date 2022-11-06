@@ -11,10 +11,11 @@ namespace bubbleSortGUI.Commands
     public class RightSelectCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-
+        private MainViewModel _mainViewModel;
+        
         public RightSelectCommand(MainViewModel mainViewModel)
         {
-
+            _mainViewModel = mainViewModel;
         }
 
         public bool CanExecute(object parameter)
@@ -24,7 +25,7 @@ namespace bubbleSortGUI.Commands
 
         public void Execute(object parameter)
         {
-            Console.WriteLine("ding dong");
+            _mainViewModel.ChooseRight();
         }
     }
 }
