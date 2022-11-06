@@ -14,9 +14,10 @@ namespace bubbleSortGUI.Commands
     {
         public event EventHandler CanExecuteChanged;
         public MainViewModel MainViewModel;
+        private bool _readingCsv;
         public bool CanExecute(object parameter)
         {
-            return true;
+            return !_readingCsv;
         }
 
         public void Execute(object parameter)
@@ -25,8 +26,7 @@ namespace bubbleSortGUI.Commands
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "txt files (.txt)|.txt|All files (.)|.";
-                openFileDialog.FilterIndex = 2;
+                openFileDialog.Filter = "csv files (.csv)|*.csv";
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -37,15 +37,16 @@ namespace bubbleSortGUI.Commands
                     //Read the contents of the file into a stream
                     var fileStream = openFileDialog.OpenFile();
 
+                    _readingCsv = true;
+                    CanExecuteChanged.Invoke(this, EventArgs.Empty);
                     MainViewModel.ReadCSV(filePath);
+                    
 
                 }
             }
 
-
-
-
-            Console.WriteLine("bing bong");
+            _readingCsv = false;
+            CanExecuteChanged.Invoke(this, EventArgs.Empty);
         }
     }
 }
