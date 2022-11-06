@@ -1,9 +1,6 @@
 ﻿using bubbleSortGUI.Commands;
 using bubbleSortGUI.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -11,9 +8,11 @@ namespace bubbleSortGUI.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private List<List<string>> csv;
+        private List<string> csv;
+        private SorterModel sorterModel;
         public MainViewModel()
         {
+            sorterModel = new SorterModel(this);
             _leftSelectCommand = new LeftSelectCommand(this);
             _rightSelectCommand = new RightSelectCommand(this);
             _openFileCommand = new OpenFileCommand
@@ -22,34 +21,37 @@ namespace bubbleSortGUI.ViewModels
             };
         }
 
-        private string _leftString = "test";
+        private string _openedFileName;
+
+        public string OpenedFileName
+        {
+            get 
+            { 
+                return _openedFileName;
+            }
+            
+        }
+
+
         public string LeftString
         {
             get
             {
-                return _leftString;
+                return sorterModel.LeftString;
             }
-            set
-            {
-                LeftString = value;
-                OnPropertyChanged(nameof(LeftString));
-            }
+
         }
 
-        private string _rightString = "test2";
 
         public string RightString
         {
-            get 
+            get
             {
-                return _rightString;
+                return sorterModel.RightString;
             }
-            set
-            {
-                _rightString = value;
-                OnPropertyChanged(nameof(RightString));
-            }
+
         }
+
 
 
         private ICommand _leftSelectCommand;
@@ -76,12 +78,30 @@ namespace bubbleSortGUI.ViewModels
             set { _openFileCommand = value; }
         }
 
-        public void ReadCSV(string path)
+        public async Task ReadCSV(string path)
         {
-            CSVReaderModel csvReaderModel = new CSVReaderModel();
+            CsvControllerModel CsvControllerModel = new CsvControllerModel();
 
-            csv = csvReaderModel.ReadCSV(path);
+            csv = CsvControllerModel.ReadCSV(path);
 
+
+            await sorterModel.Sort(csv);
+
+        }
+
+        public void ChooseLeft()
+        {
+            sorterModel.SetSelection(SorterModel.Selection.LEFT);
+        }
+        public void ChooseRight()
+        {
+            sorterModel.SetSelection(SorterModel.Selection.RIGHT);
+        }
+
+        public void UpdateStrings()
+        {
+            OnPropertyChanged(nameof(RightString));
+            OnPropertyChanged(nameof(LeftString));
         }
 
 
