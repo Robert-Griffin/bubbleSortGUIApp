@@ -84,6 +84,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\LeftSelectCommand.cs" />
+    <Compile Include="Commands\SaveFileCommand .cs" />
     <Compile Include="Commands\OpenFileCommand.cs" />
     <Compile Include="Commands\RightSelectCommand.cs" />
     <Compile Include="Models\CsvControllerModel.cs" />
@@ -111,7 +112,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\InputParameterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

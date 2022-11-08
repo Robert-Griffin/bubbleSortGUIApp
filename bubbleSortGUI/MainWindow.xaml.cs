@@ -24,6 +24,6 @@ namespace bubbleSortGUI
         public MainWindow()
         {
             InitializeComponent();
-        }
+        }    
     }
 }
