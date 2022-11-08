@@ -79,6 +79,6 @@ namespace bubbleSortGUI.Models
             var csvWriter = new CsvWriter(streamWriter, csvConfig);
 
             return Tuple.Create(streamWriter, csvWriter);
-        }s
+        }
     }
 }
