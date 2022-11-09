@@ -14,10 +14,17 @@
     <Border
         Background="#272537"
         CornerRadius="15">
-        
         <Grid Visibility="Visible">
+            <Border x:Name="TopBorder"
+                    Height="45"
+                    VerticalAlignment="Top"
+                    CornerRadius="15"
+                    >
+            </Border>
             <views:MainView/>
         </Grid>
+        
     </Border>
+    
     
 </Window>

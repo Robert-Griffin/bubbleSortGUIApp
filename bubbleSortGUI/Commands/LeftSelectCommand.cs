@@ -7,7 +7,6 @@ namespace bubbleSortGUI.Commands
     public class LeftSelectCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-
         private MainViewModel _mainViewModel;
 
         public LeftSelectCommand(MainViewModel mainViewModel)

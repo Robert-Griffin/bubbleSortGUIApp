@@ -11,7 +11,7 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="55"/>
+            <RowDefinition Height="45"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
@@ -21,14 +21,57 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
+            <Border x:Name="TopBorder"
+                    Height="45"
+                    VerticalAlignment="Top"
+                    Grid.ColumnSpan="2"
+                    Background="#FF3E3B55"
+                    CornerRadius="15"
+                    MouseLeftButtonDown="TopBorder_MouseLeftButtonDown">
+            </Border>
+            <Border VerticalAlignment="Top"
+                    Grid.ColumnSpan="2"
+                    Margin="0 30 0 0"
+                    Height="15"
+                    Background="#FF3E3B55"
+                    />
             <TextBlock Text="Manual Insertion Sort"
                        VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
+                       HorizontalAlignment="center"
+                       
                        Foreground="White"
                        FontSize="22" 
                        FontFamily="Microsoft YaHei UI"
                        Grid.Row="0"
                        Grid.ColumnSpan="2"/>
+            <StackPanel Orientation="Horizontal"
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                        Margin="0 0 15 0">
+                <Button x:Name="MinButton"
+                        Height="25"
+                        Width="25"
+                        Margin="0 0 -1 0"
+                        Background="Transparent"
+                        BorderBrush="#59AEBFC9"
+                        Content="0"
+                        FontSize="18" 
+                        FontFamily="Webdings"
+                        Foreground="#59AEBFC9" 
+                        Click="MinButton_Click"/>
+                <Button x:Name="CloseButton"
+                        Height="25"
+                        Width="25"
+                        Background="Transparent"
+                        BorderBrush="#59AEBFC9"
+                        Content="r"
+                        FontSize="18" 
+                        FontFamily="Webdings"
+                        Foreground="#59AEBFC9"
+                        Click="CloseButton_Click"/>
+            </StackPanel>
+
 
             <StackPanel Orientation="Horizontal"
                         Grid.Row="1"
@@ -59,13 +102,89 @@
                            FontFamily="Microsoft YaHei UI"
                            Foreground="#FFAEBFC9"/>
                 
-                <TextBlock Text="{Binding CurrentFile}"
+                <TextBlock Text="{Binding OpenedFileName}"
                            VerticalAlignment="Center"
                            Margin="10 0 0 0"
                            FontFamily="Microsoft YaHei UI"
                            Foreground="#FFAEBFC9"/>
             </StackPanel>
+            <Button x:Name="saveFileButton"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Width="130"
+                    Height="38"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0 10 40 0"
+                    Content="Save File"
+                    Command="{Binding SaveFileCommand}"
+                    BorderBrush="Black"
+                    BorderThickness="3" 
+                    FontFamily="Microsoft YaHei UI" 
+                    FontSize="14" 
+                    Background="#FFC2C9D6"
+                    Visibility="Visible"/>
+
+            <StackPanel Grid.Row="1"
+                        Grid.Column="0"
+                        Orientation="Vertical"
+                        Margin="0 65">
+                <TextBlock Text="Initial Values:"
+                           FontSize="16"
+                           FontFamily="Microsoft Yahei UI"
+                           Foreground="#FFAEBFc9"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"/>
+                <TextBlock Text="{Binding InitialValues}"
+                           FontSize="16"
+                           FontFamily="Microsoft Yahei UI"
+                           Foreground="#FFAEBFc9"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Margin="30 10 30 0"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1"
+                        Orientation="Vertical"
+                        Margin="0 65">
+                <TextBlock Text="Sorted Values:"
+                           FontSize="16"
+                           FontFamily="Microsoft Yahei UI"
+                           Foreground="#FFAEBFc9"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"/>
+                <TextBlock Text="{Binding SortedValues}"
+                           FontSize="16"
+                           FontFamily="Microsoft Yahei UI"
+                           Foreground="#FFAEBFc9"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Margin="30 10 30 0"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
         
+
+
+            <StackPanel Orientation="Vertical"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        VerticalAlignment="bottom"
+                        HorizontalAlignment="Center"
+                        Margin="0 0 0 10">
+                <TextBlock Text="Current test value:"
+                           FontSize="16"
+                           FontFamily="Microsoft Yahei UI"
+                           Foreground="#FFAEBFc9"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding CurrentTestValue}"
+                           Margin="0 5"
+                           FontSize="16"
+                           FontFamily="Microsoft YaHei UI"
+                           Foreground="#FFAEBFC9"
+                           HorizontalAlignment="Center"/>
+
+            </StackPanel>
             
         <Button x:Name="leftSortButton" 
                 Grid.Row="2"
@@ -82,7 +201,15 @@
                 FontSize="14" 
                 Background="#FFC2C9D6"
                 />
-        <Button x:Name="rightSortButton" 
+            <TextBlock Text="or"
+                       Grid.Row="2"
+                       Grid.ColumnSpan="2"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="16"
+                       FontFamily="Microsoft YaHei UI"
+                       Foreground="#FFC2C9D6"/>
+            <Button x:Name="rightSortButton" 
                 Grid.Row="2"
                 Grid.Column="1"
                 Content="{Binding RightString}" 
